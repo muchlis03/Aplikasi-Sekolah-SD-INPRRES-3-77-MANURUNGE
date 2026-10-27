@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile data stored under user's private collection",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 256 },
+        "photoURL": { "type": "string", "maxLength": 1024 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email"]
+    },
+    "SchoolInfo": {
+      "title": "SchoolInfo",
+      "description": "Identity and metadata for the school managed by the teacher",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 256 },
+        "npsn": { "type": "string", "maxLength": 64 },
+        "level": { "type": "string", "maxLength": 32 },
+        "address": { "type": "string", "maxLength": 512 },
+        "phone": { "type": "string", "maxLength": 64 },
+        "principal": { "type": "string", "maxLength": 256 },
+        "principalNip": { "type": "string", "maxLength": 64 },
+        "principalTitle": { "type": "string", "maxLength": 128 },
+        "headmaster": { "type": "string", "maxLength": 256 },
+        "headmasterNip": { "type": "string", "maxLength": 64 },
+        "academicYear": { "type": "string", "maxLength": 64 },
+        "semester": { "type": "string", "maxLength": 32 },
+        "teacherPhoto": { "type": "string", "maxLength": 500000 },
+        "schoolLogo": { "type": "string", "maxLength": 500000 },
+        "customFields": { "type": "array" }
+      },
+      "required": ["name", "principal"]
+    },
+    "StudentsList": {
+      "title": "StudentsList",
+      "description": "List of students enrolled under the teacher's management",
+      "type": "object",
+      "properties": {
+        "list": { "type": "array" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["list"]
+    },
+    "AttendanceRecord": {
+      "title": "AttendanceRecord",
+      "description": "Daily attendance map per date and student ID",
+      "type": "object",
+      "properties": {
+        "data": { "type": "object" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      }
+    },
+    "GradesRecord": {
+      "title": "GradesRecord",
+      "description": "Assessment grades map per class-subject and student ID",
+      "type": "object",
+      "properties": {
+        "data": { "type": "object" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}/profile/info": {
+      "schema": "UserProfile",
+      "description": "Private profile information for the authenticated user"
+    },
+    "/users/{userId}/appData/{docId}": {
+      "schema": "SchoolInfo",
+      "description": "User private application data (schoolInfo, students, attendance, grades)"
+    }
+  }
+}

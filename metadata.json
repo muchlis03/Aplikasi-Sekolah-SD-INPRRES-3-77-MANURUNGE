@@ -1,0 +1,7 @@
+{
+  "name": "Guru Hebat - Sistem Informasi Presensi & Nilai SD Inpres 3/77 Manurunge",
+  "description": "Sistem informasi presensi digital, penilaian asesmen Kurikulum Merdeka, dan pelaporan rekapitulasi untuk guru SD Inpres 3/77 Manurunge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
